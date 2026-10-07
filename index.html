@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CloverStack: build your Stack</title>
+  <meta name="description" content="CloverStack is a free portfolio network for tech professionals. Build your Stack from real projects with real collaborators. No ads wall, no spam, never pay to be seen.">
+  <meta property="og:title" content="CloverStack: build your Stack">
+  <meta property="og:description" content="Your work speaks for itself. Finally, somewhere that lets it. Join the waitlist.">
+  <meta property="og:url" content="https://cloverstack.app">
+  <meta name="theme-color" content="#2f7d4f">
+  <link rel="icon" href="clover.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="nav">
+    <a class="brand" href="/">
+      <img src="clover.svg" alt="" width="32" height="32">
+      <span>CloverStack</span>
+    </a>
+    <a class="nav-cta" href="#join">Join the waitlist</a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Free for job seekers. Forever.</p>
+      <h1>Your work speaks for itself.<br><span>Finally, somewhere that lets it.</span></h1>
+      <p class="lede">CloverStack is the place to build your Stack: a living portfolio of the real projects you've made with real people. No pay-to-be-seen. No spam. No wall of ads.</p>
+      <form class="signup" name="waitlist" method="POST" action="/thanks.html" data-netlify="true" netlify-honeypot="company">
+        <input type="hidden" name="form-name" value="waitlist">
+        <p class="hp"><label>Leave this empty <input name="company" tabindex="-1" autocomplete="off"></label></p>
+        <label class="sr-only" for="email-top">Email address</label>
+        <input id="email-top" type="email" name="email" placeholder="you@example.com" required autocomplete="email">
+        <button type="submit">Join the waitlist</button>
+      </form>
+      <p class="fine">Email only. No spam, ever. We'd be hypocrites.</p>
+    </section>
+
+    <section class="problem">
+      <h2>Job hunting is broken. We're taking it back.</h2>
+      <p>You've seen it. Job sites buried in ads. Postings that vanish into a black hole. Recruiters blasting the same message to thousands. Resumes that flatten years of work into a single page nobody reads.</p>
+      <p class="punch">CloverStack puts you back in charge.</p>
+    </section>
+
+    <section class="features">
+      <article>
+        <div class="icon" aria-hidden="true">&#9776;</div>
+        <h3>Build your Stack</h3>
+        <p>Every project you create or join lands on your Stack, with credit from the people you built it with. Highlight what you're proudest of, hide what you've outgrown, and let your work do the talking.</p>
+      </article>
+      <article>
+        <div class="icon" aria-hidden="true">&#10022;</div>
+        <h3>Build together</h3>
+        <p>Start a project, invite collaborators, and tag the roles: leader, developer, mentor. Credit is shared and permanent. Once you're on a project, nobody can take your name off it.</p>
+      </article>
+      <article>
+        <div class="icon" aria-hidden="true">&#9829;</div>
+        <h3>Your space, your way</h3>
+        <p>Remember when your profile actually felt like <em>yours</em>? We're bringing that back: personal, social and a little bit fun, with a clean, modern look.</p>
+      </article>
+      <article>
+        <div class="icon" aria-hidden="true">&#10003;</div>
+        <h3>Free for job seekers. Forever.</h3>
+        <p>You'll never pay to be seen, apply or stand out. When employers come to CloverStack, they'll play by our rules: limited postings, real responses, and one-click applications that send your Stack, not another form to fill out.</p>
+      </article>
+    </section>
+
+    <section class="join" id="join">
+      <img src="clover.svg" alt="" width="56" height="56">
+      <h2>Where paths meet and Stacks grow.</h2>
+      <p>Be one of the first to build your Stack. Early members get first pick of their profile name and a founding-member badge.</p>
+      <form class="signup" name="waitlist" method="POST" action="/thanks.html" data-netlify="true" netlify-honeypot="company">
+        <input type="hidden" name="form-name" value="waitlist">
+        <p class="hp"><label>Leave this empty <input name="company" tabindex="-1" autocomplete="off"></label></p>
+        <label class="sr-only" for="email-bottom">Email address</label>
+        <input id="email-bottom" type="email" name="email" placeholder="you@example.com" required autocomplete="email">
+        <button type="submit">Join the waitlist</button>
+      </form>
+      <p class="fine">Email only. No spam, ever. We'd be hypocrites.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 CloverStack</p>
+  </footer>
+</body>
+</html>
