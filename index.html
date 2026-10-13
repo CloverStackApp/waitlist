@@ -8,6 +8,10 @@
   <meta property="og:title" content="CloverStack: build your Stack">
   <meta property="og:description" content="Your work speaks for itself. Finally, somewhere that lets it. Join the waitlist.">
   <meta property="og:url" content="https://cloverstack.app">
+  <meta property="og:image" content="https://cloverstack.app/og-image.png">
+  <meta property="og:image:width" content="1640">
+  <meta property="og:image:height" content="624">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="theme-color" content="#f1f3fc" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#12142a" media="(prefers-color-scheme: dark)">
   <link rel="icon" href="clover.svg" type="image/svg+xml">
@@ -32,12 +36,14 @@
       <p class="lede">CloverStack is the place to build your Stack: a living portfolio of the real projects you've made with real people. No pay-to-be-seen. No spam. No wall of ads.</p>
       <form class="signup" name="waitlist" method="POST" action="/thanks.html" data-netlify="true" netlify-honeypot="company">
         <input type="hidden" name="form-name" value="waitlist">
+        <input type="hidden" name="source" value="">
+        <input type="hidden" name="ref" value="">
         <p class="hp"><label>Leave this empty <input name="company" tabindex="-1" autocomplete="off"></label></p>
         <label class="sr-only" for="email-top">Email address</label>
         <input id="email-top" type="email" name="email" placeholder="you@example.com" required autocomplete="email">
-        <button type="submit">Join the waitlist</button>
+        <button type="submit">Reserve my username</button>
       </form>
-      <p class="fine">Email only. No spam, ever. We'd be hypocrites.</p>
+      <p class="fine">Early members get first pick of their username and a founding-member badge. Email only. No spam, ever. We'd be hypocrites.</p>
     </section>
 
     <section class="problem">
@@ -72,13 +78,15 @@
     <section class="join" id="join">
       <img src="clover.svg" alt="" width="56" height="56">
       <h2>Where paths meet and Stacks grow.</h2>
-      <p>Be one of the first to build your Stack. Early members get first pick of their profile name and a founding-member badge.</p>
+      <p>Be one of the first to build your Stack. Early members get first pick of their username and a founding-member badge.</p>
       <form class="signup" name="waitlist" method="POST" action="/thanks.html" data-netlify="true" netlify-honeypot="company">
         <input type="hidden" name="form-name" value="waitlist">
+        <input type="hidden" name="source" value="">
+        <input type="hidden" name="ref" value="">
         <p class="hp"><label>Leave this empty <input name="company" tabindex="-1" autocomplete="off"></label></p>
         <label class="sr-only" for="email-bottom">Email address</label>
         <input id="email-bottom" type="email" name="email" placeholder="you@example.com" required autocomplete="email">
-        <button type="submit">Join the waitlist</button>
+        <button type="submit">Reserve my username</button>
       </form>
       <p class="fine">Email only. No spam, ever. We'd be hypocrites.</p>
     </section>
@@ -87,5 +95,17 @@
   <footer>
     <p>&copy; 2026 CloverStack</p>
   </footer>
+  <script>
+    // Record where each signup came from (?utm_source= or ?ref=) in hidden form fields.
+    (function () {
+      var params = new URLSearchParams(location.search);
+      var source = params.get('utm_source') || (document.referrer ? new URL(document.referrer).hostname : '');
+      var ref = params.get('ref') || '';
+      document.querySelectorAll('form[name="waitlist"]').forEach(function (form) {
+        form.elements.source.value = source.slice(0, 100);
+        form.elements.ref.value = ref.slice(0, 100);
+      });
+    })();
+  </script>
 </body>
 </html>
