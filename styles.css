@@ -1,26 +1,41 @@
+/* CloverStack brand: Garden Party palette (D-028/D-111), Meadow accents (D-088), Nunito (D-029).
+   Light/dark follows the device (D-027). Tokens mirror /design/site-palettes.css in the project files. */
 :root {
-  --bg: #fbf8f1;
+  --bg: #f1f3fc;          /* Periwinkle */
   --surface: #ffffff;
-  --ink: #1d2b22;
-  --muted: #5a6b60;
-  --green: #2f7d4f;
-  --green-dark: #1f5a37;
-  --green-soft: #e9f5ec;
-  --accent: #f2b544;
-  --border: #e4ddcd;
+  --text: #1b1f38;        /* Ink */
+  --muted: #5d6382;
+  --line: #dde1f2;
+  --accent: #2f7d4f;      /* Clover green */
+  --accent-hover: #1f5a37;
+  --on-accent: #ffffff;
+  --accent-soft: #e9f5ec; /* Mint */
+  --second: #c46a92;      /* Sweet pea */
+  --second-soft: #f8e1ec;
+  --second-text: #93436a;
+  --glyph-1: #3e8e5e;     /* Meadow: clover */
+  --glyph-5: #9c7cc4;     /* Meadow: lavender */
+  --glyph-6: #4f9bc9;     /* Meadow: sky */
+  --glyph-7: #c46a92;     /* Meadow: sweet pea */
+  --font: "Nunito", "Segoe UI", system-ui, sans-serif;
   --radius: 16px;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #121a15;
-    --surface: #1a251e;
-    --ink: #edf3ee;
-    --muted: #a7b8ac;
-    --green: #5bbf84;
-    --green-dark: #8fd9ab;
-    --green-soft: #1f3327;
-    --border: #2b3a30;
+    --bg: #12142a;
+    --surface: #1b1e3a;
+    --text: #eceefc;
+    --muted: #a3a8c9;
+    --line: #2c3054;
+    --accent: #5bbf84;
+    --accent-hover: #8fd9ab;
+    --on-accent: #12142a;
+    --accent-soft: #1c2e34;
+    --second: #e58fb7;
+    --second-soft: #3a2034;
+    --second-text: #f0a9c9;
+    color-scheme: dark;
   }
 }
 
@@ -29,17 +44,18 @@
 body {
   margin: 0;
   background: var(--bg);
-  color: var(--ink);
-  font: 400 17px/1.6 "Inter", system-ui, -apple-system, sans-serif;
+  color: var(--text);
+  font: 400 17px/1.6 var(--font);
 }
 
 h1, h2, h3 {
-  font-family: "Fraunces", Georgia, serif;
+  font-family: var(--font);
+  font-weight: 800;
   line-height: 1.15;
   margin: 0 0 0.5em;
 }
 
-a { color: var(--green); }
+a { color: var(--accent); }
 
 .nav {
   display: flex;
@@ -55,15 +71,15 @@ a { color: var(--green); }
   align-items: center;
   gap: 10px;
   text-decoration: none;
-  color: var(--ink);
-  font: 700 20px "Fraunces", Georgia, serif;
+  color: var(--text);
+  font: 800 21px var(--font);
 }
 
 .nav-cta {
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 700;
   padding: 8px 16px;
-  border: 2px solid var(--green);
+  border: 2px solid var(--accent);
   border-radius: 999px;
 }
 
@@ -77,15 +93,15 @@ section { padding: 64px 0; }
   display: inline-block;
   margin: 0 0 20px;
   padding: 6px 14px;
-  background: var(--green-soft);
-  color: var(--green-dark);
+  background: var(--second-soft);
+  color: var(--second-text);
   border-radius: 999px;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 14px;
 }
 
 .hero h1 { font-size: clamp(36px, 6vw, 64px); }
-.hero h1 span { color: var(--green); }
+.hero h1 span { color: var(--accent); }
 
 .lede {
   max-width: 640px;
@@ -106,26 +122,26 @@ section { padding: 64px 0; }
   min-width: 0;
   padding: 14px 16px;
   font: inherit;
-  color: var(--ink);
+  color: var(--text);
   background: var(--surface);
-  border: 2px solid var(--border);
+  border: 2px solid var(--line);
   border-radius: 12px;
 }
 
-.signup input[type="email"]:focus { outline: none; border-color: var(--green); }
+.signup input[type="email"]:focus { outline: none; border-color: var(--accent); }
 
 .signup button {
   padding: 14px 22px;
-  font: 600 16px "Inter", sans-serif;
-  color: #fff;
-  background: var(--green);
+  font: 700 16px var(--font);
+  color: var(--on-accent);
+  background: var(--accent);
   border: 0;
   border-radius: 12px;
   cursor: pointer;
   white-space: nowrap;
 }
 
-.signup button:hover { background: var(--green-dark); }
+.signup button:hover { background: var(--accent-hover); }
 
 .fine { margin-top: 12px; font-size: 14px; color: var(--muted); }
 
@@ -145,7 +161,7 @@ section { padding: 64px 0; }
 
 .problem h2 { font-size: clamp(28px, 4vw, 40px); }
 .problem p { color: var(--muted); }
-.problem .punch { color: var(--green); font-weight: 600; font-size: 20px; }
+.problem .punch { color: var(--accent); font-weight: 800; font-size: 20px; }
 
 .features {
   display: grid;
@@ -155,22 +171,28 @@ section { padding: 64px 0; }
 
 .features article {
   background: var(--surface);
-  border: 1px solid var(--border);
+  border: 1px solid var(--line);
   border-radius: var(--radius);
   padding: 28px;
 }
 
+/* Each card's icon takes one Meadow accent */
 .features .icon {
   width: 44px;
   height: 44px;
   display: grid;
   place-items: center;
   margin-bottom: 16px;
-  background: var(--green-soft);
-  color: var(--green);
+  background: var(--glyph, var(--glyph-1));
+  color: #ffffff;
   border-radius: 12px;
   font-size: 20px;
 }
+
+.features article:nth-child(1) { --glyph: var(--glyph-1); }
+.features article:nth-child(2) { --glyph: var(--glyph-7); }
+.features article:nth-child(3) { --glyph: var(--glyph-6); }
+.features article:nth-child(4) { --glyph: var(--glyph-5); }
 
 .features h3 { font-size: 22px; }
 .features p { margin: 0; color: var(--muted); }
@@ -179,7 +201,7 @@ section { padding: 64px 0; }
   text-align: center;
   margin: 32px 0 64px;
   padding: 56px 24px;
-  background: var(--green-soft);
+  background: var(--accent-soft);
   border-radius: 24px;
 }
 
