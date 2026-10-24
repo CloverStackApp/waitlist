@@ -2,7 +2,7 @@
 
 A plain-language list of every outside service cloverstack.app talks to, so anyone can check that there are no hidden ads, trackers, or backdoors.
 
-Last checked: 2026-10-13, by reading every file in this repository (`index.html`, `thanks.html`, `styles.css`, `signup-source.js`, `clover.svg`, `og-image.png`, `_headers`). The site has no build step, so these files are exactly what visitors get.
+Last checked: 2026-10-13, by reading every file in this repository (`index.html`, `thanks.html`, `styles.css`, `signup-source.js`, `clover.svg`, `og-image.png`, `email-logo.png`, `_headers`). The site has no build step, so these files are exactly what visitors get.
 
 ## The short version
 
@@ -40,6 +40,10 @@ Found by searching every file for `http`, `//`, `src=`, `href=`, `url(` and `@im
 The form sends to `/thanks.html` on cloverstack.app itself. Netlify Forms receives it and stores it in the Netlify account. What is sent: your email, the two "where you came from" fields above, and an empty hidden field used to catch spam bots.
 
 Netlify runs its own spam filtering on submissions on their servers. That happens after the form leaves your browser, so it won't show up in DevTools; see Netlify's own privacy policy for details.
+
+## The email logo
+
+`email-logo.png` is the clover logo used in CloverStack email signatures. No page on this site loads it. Email apps fetch it from cloverstack.app when someone opens an email with the signature, the same way they load any picture in an email. It has no tracking code and the file is the same for everyone.
 
 ## Content credentials in the image files
 
