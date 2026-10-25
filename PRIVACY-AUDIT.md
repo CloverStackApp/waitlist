@@ -26,7 +26,7 @@ Found by searching every file for `http`, `//`, `src=`, `href=`, `url(` and `@im
 | `https://fonts.gstatic.com` | `index.html`, `thanks.html` (preconnect) | Yes, downloads the font files. |
 | `https://fonts.googleapis.com` | `index.html`, `thanks.html` (preconnect) | Yes, same as the stylesheet above. |
 | `https://cloverstack.app` and `https://cloverstack.app/og-image.png` | `index.html` (`og:` tags) | No. These tell Facebook, LinkedIn, etc. which picture to show when someone shares the link. Those sites fetch the image themselves; the visitor's browser does not. |
-| `https://cloverstack-test.netlify.app/signin` and `/join` | `index.html` (Sign in links and the invite code form) | Only when you click Sign in or submit an invite code. That's the CloverStack app itself during early access. Nothing is sent before you click. |
+| `https://app.cloverstack.app/signin` and `/join` | `index.html` (Sign in links and the invite code form) | Only when you click Sign in or submit an invite code. That is the CloverStack app itself. Nothing is sent before you click. |
 | `http://www.w3.org/2000/svg` | `clover.svg` | No. A standard label that says "this is an SVG image." Never fetched. |
 | `http://c2pa.org/manifest` | `clover.svg` | No. A label for the "content credentials" block described below. Never fetched. |
 
