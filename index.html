@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>CloverStack: build your Stack</title>
-  <meta name="description" content="CloverStack is a free portfolio network for tech professionals. Build your Stack from real projects with real collaborators. No ads wall, no spam, never pay to be seen.">
+  <meta name="description" content="CloverStack is a free portfolio network for tech professionals. Build your Stack from real projects with real collaborators. Early access is open to invited members.">
   <meta property="og:title" content="CloverStack: build your Stack">
-  <meta property="og:description" content="Your work speaks for itself. Finally, somewhere that lets it. Join the waitlist.">
+  <meta property="og:description" content="Your work speaks for itself. Finally, somewhere that lets it. Early access is open.">
   <meta property="og:url" content="https://cloverstack.app">
   <meta property="og:image" content="https://cloverstack.app/og-image.png">
   <meta property="og:image:width" content="1640">
@@ -17,35 +17,74 @@
   <link rel="icon" href="clover.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="nav">
-    <a class="brand" href="/">
-      <img src="clover.svg" alt="" width="32" height="32">
-      <span>CloverStack</span>
-    </a>
-    <a class="nav-cta" href="#join">Join the waitlist</a>
-  </header>
+  <svg class="defs" aria-hidden="true">
+    <symbol id="clover" viewBox="6 5 52 52">
+      <g class="cl-leaf"><circle cx="22" cy="22" r="12"/><circle cx="42" cy="22" r="12"/><circle cx="22" cy="40" r="12"/><circle cx="42" cy="40" r="12"/><circle cx="32" cy="31" r="7"/></g>
+      <g class="cl-bar"><rect x="26" y="25" width="12" height="3" rx="1.5"/><rect x="26" y="30" width="12" height="3" rx="1.5"/><rect x="26" y="35" width="12" height="3" rx="1.5"/></g>
+    </symbol>
+    <symbol id="i-stack" viewBox="0 0 24 24"><path class="ic" d="M4 7h16M4 12h16M4 17h10"/></symbol>
+    <symbol id="i-team" viewBox="0 0 24 24"><g class="ic"><circle cx="8" cy="9" r="3"/><circle cx="16" cy="9" r="3"/><path d="M3 19c1-3 3-4 5-4s4 1 5 4M11 19c1-3 3-4 5-4s4 1 5 4"/></g></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path class="ic-fill" d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path class="ic" d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+  </svg>
+
+  <section class="hero">
+    <!-- Four looping roads that form a clover, like a cloverleaf interchange seen from above -->
+    <svg class="roads" viewBox="0 0 900 600" aria-hidden="true">
+      <path id="l1" class="loop r1" d="M450 300 C 300 300, 220 120, 330 70 C 430 25, 470 180, 450 300"/>
+      <path id="l2" class="loop r2" d="M450 300 C 450 150, 630 70, 690 170 C 740 260, 580 300, 450 300"/>
+      <path id="l3" class="loop r3" d="M450 300 C 600 300, 680 480, 570 530 C 470 575, 430 420, 450 300"/>
+      <path id="l4" class="loop r4" d="M450 300 C 450 450, 270 530, 210 430 C 160 340, 320 300, 450 300"/>
+      <path class="cross" d="M0 300 H900 M450 0 V600"/>
+      <circle class="car r1" r="6"><animateMotion dur="9s" repeatCount="indefinite"><mpath href="#l1"/></animateMotion></circle>
+      <circle class="car r2" r="6"><animateMotion dur="11s" begin="-3s" repeatCount="indefinite"><mpath href="#l2"/></animateMotion></circle>
+      <circle class="car r3" r="6"><animateMotion dur="10s" begin="-6s" repeatCount="indefinite"><mpath href="#l3"/></animateMotion></circle>
+      <circle class="car r4" r="6"><animateMotion dur="12s" begin="-2s" repeatCount="indefinite"><mpath href="#l4"/></animateMotion></circle>
+    </svg>
+
+    <header class="nav">
+      <a class="brand" href="/">
+        <img src="clover.svg" alt="" width="34" height="34">
+        <span>CloverStack</span>
+      </a>
+      <!-- App address: also in the invite form below and in _headers (form-action) -->
+      <a class="signin" href="https://cloverstack-test.netlify.app/signin">Sign in</a>
+    </header>
+
+    <div class="hero-body">
+      <p class="pill"><span class="dot"></span>Early access is open</p>
+      <h1>Where paths meet <span>and Stacks grow.</span></h1>
+      <p class="lede">Your work speaks for itself. CloverStack is where you build your Stack: a living portfolio of the real projects you've made with real people. No pay-to-be-seen. No spam. No wall of ads.</p>
+
+      <div class="joinbox" id="top">
+        <div class="switch" role="tablist" aria-label="How to join" hidden>
+          <button type="button" role="tab" aria-selected="true" data-mode="wait">Join the waitlist</button>
+          <button type="button" role="tab" aria-selected="false" data-mode="invite">I have an invite</button>
+        </div>
+        <form class="signup" data-form="wait" name="waitlist" method="POST" action="/thanks.html" data-netlify="true" netlify-honeypot="company">
+          <input type="hidden" name="form-name" value="waitlist">
+          <input type="hidden" name="source" value="">
+          <input type="hidden" name="ref" value="">
+          <p class="hp"><label>Leave this empty <input name="company" tabindex="-1" autocomplete="off"></label></p>
+          <label class="sr-only" for="email-top">Email address</label>
+          <input id="email-top" type="email" name="email" placeholder="you@example.com" required autocomplete="email">
+          <button type="submit">Reserve my username</button>
+        </form>
+        <form class="signup" data-form="invite" method="GET" action="https://cloverstack-test.netlify.app/join">
+          <label class="sr-only" for="invite-top">Invite code</label>
+          <input id="invite-top" class="code" name="invite" placeholder="ABCD-2345" required autocomplete="off" spellcheck="false">
+          <button type="submit">Join CloverStack</button>
+        </form>
+        <p class="fine" data-fine>Early members get first pick of their username and a founding-member badge.</p>
+      </div>
+    </div>
+  </section>
 
   <main>
-    <section class="hero">
-      <p class="eyebrow">Free for job seekers. Forever.</p>
-      <h1>Your work speaks for itself.<br><span>Finally, somewhere that lets it.</span></h1>
-      <p class="lede">CloverStack is the place to build your Stack: a living portfolio of the real projects you've made with real people. No pay-to-be-seen. No spam. No wall of ads.</p>
-      <form class="signup" name="waitlist" method="POST" action="/thanks.html" data-netlify="true" netlify-honeypot="company">
-        <input type="hidden" name="form-name" value="waitlist">
-        <input type="hidden" name="source" value="">
-        <input type="hidden" name="ref" value="">
-        <p class="hp"><label>Leave this empty <input name="company" tabindex="-1" autocomplete="off"></label></p>
-        <label class="sr-only" for="email-top">Email address</label>
-        <input id="email-top" type="email" name="email" placeholder="you@example.com" required autocomplete="email">
-        <button type="submit">Reserve my username</button>
-      </form>
-      <p class="fine">Early members get first pick of their username and a founding-member badge. Email only. No spam, ever. We'd be hypocrites.</p>
-    </section>
-
     <section class="problem">
       <h2>Job hunting is broken. We're taking it back.</h2>
       <p>You've seen it. Job sites buried in ads. Postings that vanish into a black hole. Recruiters blasting the same message to thousands. Resumes that flatten years of work into a single page nobody reads.</p>
@@ -54,31 +93,31 @@
 
     <section class="features">
       <article>
-        <div class="icon" aria-hidden="true">&#9776;</div>
+        <span class="chip"><svg><use href="#i-stack"/></svg></span>
         <h3>Build your Stack</h3>
         <p>Every project you create or join lands on your Stack, with credit from the people you built it with. Highlight what you're proudest of, hide what you've outgrown, and let your work do the talking.</p>
       </article>
       <article>
-        <div class="icon" aria-hidden="true">&#10022;</div>
+        <span class="chip"><svg><use href="#i-team"/></svg></span>
         <h3>Build together</h3>
         <p>Start a project, invite collaborators, and tag the roles: leader, developer, mentor. Credit is shared and permanent. Once you're on a project, nobody can take your name off it.</p>
       </article>
       <article>
-        <div class="icon" aria-hidden="true">&#9829;</div>
+        <span class="chip"><svg><use href="#i-heart"/></svg></span>
         <h3>Your space, your way</h3>
         <p>Remember when your profile actually felt like <em>yours</em>? We're bringing that back: personal, social and a little bit fun, with a clean, modern look.</p>
       </article>
       <article>
-        <div class="icon" aria-hidden="true">&#10003;</div>
+        <span class="chip"><svg><use href="#i-check"/></svg></span>
         <h3>Free for job seekers. Forever.</h3>
         <p>You'll never pay to be seen, apply or stand out. When employers come to CloverStack, they'll play by our rules: limited postings, real responses, and one-click applications that send your Stack, not another form to fill out.</p>
       </article>
     </section>
 
     <section class="join" id="join">
-      <img src="clover.svg" alt="" width="56" height="56">
-      <h2>Where paths meet and Stacks grow.</h2>
-      <p>Be one of the first to build your Stack. Early members get first pick of their username and a founding-member badge.</p>
+      <svg class="join-clover" width="56" height="56" aria-hidden="true"><use href="#clover"/></svg>
+      <h2>Be one of the first to build your Stack.</h2>
+      <p>Early members get first pick of their username and a founding-member badge. Got an invite already? <a href="#top">Use it at the top</a> or <a href="https://cloverstack-test.netlify.app/signin">sign in</a>.</p>
       <form class="signup" name="waitlist" method="POST" action="/thanks.html" data-netlify="true" netlify-honeypot="company">
         <input type="hidden" name="form-name" value="waitlist">
         <input type="hidden" name="source" value="">
@@ -96,5 +135,6 @@
     <p>&copy; 2026 CloverStack</p>
   </footer>
   <script src="signup-source.js"></script>
+  <script src="join-switch.js"></script>
 </body>
 </html>

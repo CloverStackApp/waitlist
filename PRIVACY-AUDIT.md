@@ -2,11 +2,11 @@
 
 A plain-language list of every outside service cloverstack.app talks to, so anyone can check that there are no hidden ads, trackers, or backdoors.
 
-Last checked: 2026-10-13, by reading every file in this repository (`index.html`, `thanks.html`, `styles.css`, `signup-source.js`, `clover.svg`, `og-image.png`, `email-logo.png`, `_headers`). The site has no build step, so these files are exactly what visitors get.
+Last checked: 2026-10-25, by reading every file in this repository (`index.html`, `thanks.html`, `styles.css`, `signup-source.js`, `join-switch.js`, `clover.svg`, `og-image.png`, `email-logo.png`, `_headers`). The site has no build step, so these files are exactly what visitors get.
 
 ## The short version
 
-When you visit, your browser talks to **three** places, and only three:
+When you visit, your browser talks to **three** places, and only three (a fourth, the CloverStack app, only if you click Sign in or use an invite code):
 
 | Who | What for | What they can see |
 |---|---|---|
@@ -26,18 +26,23 @@ Found by searching every file for `http`, `//`, `src=`, `href=`, `url(` and `@im
 | `https://fonts.gstatic.com` | `index.html`, `thanks.html` (preconnect) | Yes, downloads the font files. |
 | `https://fonts.googleapis.com` | `index.html`, `thanks.html` (preconnect) | Yes, same as the stylesheet above. |
 | `https://cloverstack.app` and `https://cloverstack.app/og-image.png` | `index.html` (`og:` tags) | No. These tell Facebook, LinkedIn, etc. which picture to show when someone shares the link. Those sites fetch the image themselves; the visitor's browser does not. |
+| `https://cloverstack-test.netlify.app/signin` and `/join` | `index.html` (Sign in links and the invite code form) | Only when you click Sign in or submit an invite code. That's the CloverStack app itself during early access. Nothing is sent before you click. |
 | `http://www.w3.org/2000/svg` | `clover.svg` | No. A standard label that says "this is an SVG image." Never fetched. |
 | `http://c2pa.org/manifest` | `clover.svg` | No. A label for the "content credentials" block described below. Never fetched. |
 
 `styles.css` contains no outside addresses.
 
-## The one script
+## The two scripts
 
-`signup-source.js` (10 lines) is the only script on the site. It reads the page's own address for `?utm_source=` or `?ref=` (or, if neither is there, the name of the website that linked you) and copies that into two hidden fields of the signup form, so we know which posts bring people in. It does not contact anything. It only matters if you submit the form.
+`join-switch.js` flips the box at the top between the waitlist form and the invite code form. It only shows and hides parts of the page. It does not contact anything.
 
-## The signup form
+`signup-source.js` (10 lines) It reads the page's own address for `?utm_source=` or `?ref=` (or, if neither is there, the name of the website that linked you) and copies that into two hidden fields of the signup form, so we know which posts bring people in. It does not contact anything. It only matters if you submit the form.
 
-The form sends to `/thanks.html` on cloverstack.app itself. Netlify Forms receives it and stores it in the Netlify account. What is sent: your email, the two "where you came from" fields above, and an empty hidden field used to catch spam bots.
+## The forms
+
+**Invite code form.** If you have an invite, the code you type is sent to the CloverStack app's Join page (`/join?invite=YOUR-CODE`) when you press Join CloverStack, and you continue signing up there. Nothing else is sent.
+
+**Waitlist form.** It sends to `/thanks.html` on cloverstack.app itself. Netlify Forms receives it and stores it in the Netlify account. What is sent: your email, the two "where you came from" fields above, and an empty hidden field used to catch spam bots.
 
 Netlify runs its own spam filtering on submissions on their servers. That happens after the form leaves your browser, so it won't show up in DevTools; see Netlify's own privacy policy for details.
 
@@ -58,7 +63,7 @@ Netlify runs its own spam filtering on submissions on their servers. That happen
 - Fonts: fonts.gstatic.com.
 - Images: cloverstack.app only.
 - Background connections (fetch, beacons, websockets): **none at all.**
-- Forms: may only submit to cloverstack.app.
+- Forms: may only submit to cloverstack.app, plus the CloverStack app for the invite code form.
 - The site can't be embedded in someone else's page.
 
 So even if a tracker were somehow added to the page later, visitors' browsers would refuse to load it or send it data. If you add a new outside service on purpose, it has to be added to `_headers` **and** to this file.
